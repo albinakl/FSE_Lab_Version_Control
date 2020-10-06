@@ -1,7 +1,22 @@
 from storage import Storage
 
 def test_add():
-    pass
+    #try our add function to add new key
+    st = Storage({'a': 1, 'b': 2})
+    key = 'c'
+    val = 3
+    st = st.add(key, val)
+    assert st.get(key) == val, "Value {} for the new key {} added unsuccessfully".format(val, key)
+    
+    #try our add function to add existing key
+    existing_key = 'b'
+    try:
+        st = st.add(existing_key, val)
+    except Exception:
+        pass
+    else:
+        print("After adding existing key {} Exseption not Raised".format(existing_key))
+
 
 def test_remove():
     st = Storage({'a': 1, 'b': 2})
